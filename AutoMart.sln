@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMart", "AutoMart\AutoMart.csproj", "{D68B26D8-2F4B-4026-84E9-BF2D7DF4DE83}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{31DA4E17-67E8-4945-8796-F3FC9C97C78C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D68B26D8-2F4B-4026-84E9-BF2D7DF4DE83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D68B26D8-2F4B-4026-84E9-BF2D7DF4DE83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D68B26D8-2F4B-4026-84E9-BF2D7DF4DE83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D68B26D8-2F4B-4026-84E9-BF2D7DF4DE83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31DA4E17-67E8-4945-8796-F3FC9C97C78C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31DA4E17-67E8-4945-8796-F3FC9C97C78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31DA4E17-67E8-4945-8796-F3FC9C97C78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31DA4E17-67E8-4945-8796-F3FC9C97C78C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33141E67-CD1B-4283-A230-C90B8FBA486F}
+	EndGlobalSection
+EndGlobal

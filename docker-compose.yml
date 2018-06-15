@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  automart:
+    image: ${DOCKER_REGISTRY}automart
+    build:
+      context: .
+      dockerfile: AutoMart/Dockerfile
