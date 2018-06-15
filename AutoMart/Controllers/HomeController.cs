@@ -19,22 +19,8 @@ namespace AutoMart.Controllers
         }
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
             //_context.Categoria.Add(new Categoria { IDCategoria = 0, Descripcion = "ummmm" });
             //_context.SaveChanges();
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
             return View();
         }
