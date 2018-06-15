@@ -5,11 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AutoMart.Models;
+using AutoMart.DataAccess;
 
 namespace AutoMart.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DataBaseContextDbContext _context;
+
+        public HomeController(DataBaseContextDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -18,6 +25,9 @@ namespace AutoMart.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+
+            //_context.Categoria.Add(new Categoria { IDCategoria = 0, Descripcion = "ummmm" });
+            //_context.SaveChanges();
 
             return View();
         }

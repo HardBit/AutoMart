@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMart", "AutoMart\AutoMa
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{31DA4E17-67E8-4945-8796-F3FC9C97C78C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMart.DataAccess", "AutoMart.DataAccess\AutoMart.DataAccess.csproj", "{9DE7E03F-841F-44C0-915A-505214CCD2AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{31DA4E17-67E8-4945-8796-F3FC9C97C78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31DA4E17-67E8-4945-8796-F3FC9C97C78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31DA4E17-67E8-4945-8796-F3FC9C97C78C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE7E03F-841F-44C0-915A-505214CCD2AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE7E03F-841F-44C0-915A-505214CCD2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE7E03F-841F-44C0-915A-505214CCD2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE7E03F-841F-44C0-915A-505214CCD2AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
