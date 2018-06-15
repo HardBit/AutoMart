@@ -17,24 +17,31 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Always expand</a>
-        <button class="navbar-toggler" aria-expanded="false" aria-controls="navbarsExample02" aria-label="Toggle navigation" type="button" data-target="#navbarsExample02" data-toggle="collapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExample02">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control" type="text" placeholder="Search">
-            </form>
-        </div>
+    <nav class="navbar navbar-dark bg-dark justify-content-around">
+        <a class="navbar-brand" href="#">AutoMart</a>
+        <form class="form-inline">
+            <select class="custom-select form-control-lg mr-sm-2" id="inlineFormCustomSelect">
+                <option selected>Seleccione una categoria...</option>
+                <option value="1">One</option>
+            </select>
+            <input class="form-control form-control-lg mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-lg btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        <ul class="nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle btn-info  btn-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline">
+            <button class="btn btn-lg btn-outline-light my-2 my-sm-0" type="submit">Carrito</button>
+        </form>
     </nav>
     <div class="container body-content">
         @RenderBody()
