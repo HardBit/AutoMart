@@ -33,7 +33,13 @@ namespace AutoMart.Controllers
         [HttpGet]
         public IActionResult ObtenerProductosPorCategoria(int categoria)
         {
-            var productos = _context.Producto.Where(p => p.IDCategoria == categoria).ToList();
+            List<Producto> productos = null;
+            if (categoria == -1) {
+                productos = _context.Producto.ToList();
+            } else {
+                productos = _context.Producto.Where(p => p.IDCategoria == categoria).ToList();
+            }
+
             foreach (var producto in productos)
             {
                 _context.Entry(producto).Reference(p => p.Categoria).Load();
