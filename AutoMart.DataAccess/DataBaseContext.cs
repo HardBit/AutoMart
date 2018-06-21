@@ -10,5 +10,8 @@ namespace AutoMart.DataAccess
         { }
 
         public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Producto> Producto { get; set; }
+        public DbSet<Marca> Marca { get; set; }
+        public DbSet<Modelo> Modelo { get; set; }
     }
 }

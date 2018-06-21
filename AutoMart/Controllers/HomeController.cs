@@ -17,12 +17,30 @@ namespace AutoMart.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             //_context.Categoria.Add(new Categoria { IDCategoria = 0, Descripcion = "ummmm" });
             //_context.SaveChanges();
 
+            var categorias = _context.Categoria.ToList();
+
+            ViewBag.categorias = categorias;
+
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult ObtenerProductosPorCategoria(int categoria)
+        {
+            var productos = _context.Producto.Where(p => p.IDCategoria == categoria).ToList();
+            foreach (var producto in productos)
+            {
+                _context.Entry(producto).Reference(p => p.Categoria).Load();
+            }
+
+
+            return Json(productos);
         }
 
         public IActionResult Error()
