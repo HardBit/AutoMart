@@ -35,10 +35,18 @@
 
 
 /**/
-#content-cards {
+#content-cards, .carrito-content {
     margin-top: 10px;
 }
 
 .card-group {
     margin-bottom: 10px;
+}
+
+.producto-detalle > .row {
+    margin-bottom: 10px;
+}
+
+.producto-detalle > .row > div:first-child {
+    font-weight: bold;
 }

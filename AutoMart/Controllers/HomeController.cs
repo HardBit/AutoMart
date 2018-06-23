@@ -30,6 +30,12 @@ namespace AutoMart.Controllers
             return View();
         }
 
+        public IActionResult Carrito()
+        {
+
+            return View();
+        }
+
         [HttpGet]
         public IActionResult ObtenerProductosPorCategoria(int categoria)
         {
@@ -43,8 +49,9 @@ namespace AutoMart.Controllers
             foreach (var producto in productos)
             {
                 _context.Entry(producto).Reference(p => p.Categoria).Load();
+                _context.Entry(producto).Reference(p => p.Marca).Load();
+                _context.Entry(producto).Reference(p => p.Modelo).Load();
             }
-
 
             return Json(productos);
         }

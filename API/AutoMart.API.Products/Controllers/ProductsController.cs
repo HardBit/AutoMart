@@ -23,7 +23,6 @@ namespace AutoMart.API.Products.Controllers
         public List<Producto> ObtenerProductosPorCategoria(int categoria)
         {
             List<Producto> productos = null;
-
             if (categoria == -1)
             {
                 productos = _context.Producto.ToList();
@@ -36,8 +35,9 @@ namespace AutoMart.API.Products.Controllers
             foreach (var producto in productos)
             {
                 _context.Entry(producto).Reference(p => p.Categoria).Load();
+                _context.Entry(producto).Reference(p => p.Marca).Load();
+                _context.Entry(producto).Reference(p => p.Modelo).Load();
             }
-
 
             return productos;
         }

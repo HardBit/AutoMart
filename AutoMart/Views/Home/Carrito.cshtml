@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Carrito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TopNavBar {
+    <form class="form-inline"></form>
+}
+
+    <div id="content-cards">
+        <div class="card" style="">
+            <div class="card-header">
+                Lista de productos
+            </div>
+            <ul class="list-group list-group-flush">
+                
+            </ul>
+        </div>
+    </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var itemCarrito = $('<li class="list-group-item"></li>');
+        });
+    </script>
+}

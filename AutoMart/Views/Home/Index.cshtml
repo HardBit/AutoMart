@@ -77,11 +77,70 @@
                         <div class="col-lg-4">
                             <img class="card-img-top" src="~/images/untitled.png" alt="Card image cap">
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-8 producto-detalle">
                             <div class="row">
                                 <div class="col-lg-4">
+                                    Nombre:
                                 </div>
                                 <div class="col-lg-8">
+                                    <label id="nombre"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    Descripción:
+                                </div>
+                                <div class="col-lg-8">
+                                    <label id="descripcion"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    Precio:
+                                </div>
+                                <div class="col-lg-8">
+                                    <label id="precio"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    Marca:
+                                </div>
+                                <div class="col-lg-8">
+                                    <label id="marca"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    Modelo:
+                                </div>
+                                <div class="col-lg-8">
+                                    <label id="modelo"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    Categoría:
+                                </div>
+                                <div class="col-lg-8">
+                                    <label id="categoria"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    Año:
+                                </div>
+                                <div class="col-lg-8">
+                                    <label id="anio"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>Cantidad: </label>
+                                    <input class="form-control" id="cantidad" aria-describedby="" value="1" type="number" placeholder="Cantidad" style="margin-left: 20px; width: 90px; display: inline !important;">
+                                </div>
+                                <div class="col-lg-6">
+                                    <button id="agregar-producto" type="button" class="btn btn-success">+ Agregar al carrito</button>
                                 </div>
                             </div>
                         </div>
@@ -118,6 +177,7 @@
                         }
 
                         el.attr('IdProducto', data[j].idProducto);
+                        el.attr('data', JSON.stringify(data[j]));
                         el.find('.card-title').append(data[j].nombre);
                         el.find('.card-text').append(data[j].precio);
 
@@ -144,12 +204,31 @@
 
                     $('.card').on('click', function () {
                         var IdProducto = $(this).attr('IdProducto');
+                        var data = JSON.parse($(this).attr('data'));
+
+                        console.log(data);
 
                         console.log('card click ->', IdProducto);
 
-                        $('#modal-detalle-producto').modal('show');
+                        var dlgProductoDetalle = $('#modal-detalle-producto');
+                        dlgProductoDetalle.find('#nombre').text(data.nombre);
+                        dlgProductoDetalle.find('#descripcion').text(data.descripcion);
+                        dlgProductoDetalle.find('#precio').text('$ ' + data.precio);
+                        dlgProductoDetalle.find('#marca').text(data.marca.descripcion);
+                        dlgProductoDetalle.find('#modelo').text(data.modelo.descripcion);
+                        dlgProductoDetalle.find('#categoria').text(data.categoria.descripcion);
+                        dlgProductoDetalle.find('#anio').text(data.anio);
+                        dlgProductoDetalle.find('#agregar-producto').attr('idProducto', IdProducto);
+
+                        dlgProductoDetalle.modal('show');
                     });
                 });
+            });
+
+            $('#agregar-producto').on('click', function () {
+                var idProducto = $(this).attr('idProducto');
+
+                ManejarProductos.agregar({id: idProducto, cantidad: 1});
             });
         });
     </script>
