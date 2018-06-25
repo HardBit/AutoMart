@@ -1,37 +1,53 @@
 ﻿// Write your JavaScript code.
+'use strict';
+
 if (!localStorage.productos) {
     localStorage.productos = "";
 }
 
 window.ManejarProductos = (function () {
+    var self = {};
+
     var productos = [];
 
-    this.agregar = function (product) {
+    if (localStorage.productos !== '') {
+        productos = JSON.parse(localStorage.productos);
+    }
+
+    $('#count-badge').text(productos.length);
+
+    self.agregar = function (product) {
         var indice = productos.findIndex(function (p) {
             return p.id === product.id;
         });
 
         if (indice !== -1) {
-            productos.push(product);
+            productos[indice].cantidad += parseInt(product.cantidad);
         } else {
-            //productos[indice].cantidad = product.cantidad;
+            productos.push(product);
         }
+
+        $('#count-badge').text(productos.length);
         localStorage.productos = JSON.stringify(productos);
     }
 
-    this.eliminar = function (key) {
+    self.eliminar = function (key) {
         var indice = productos.findIndex(function (p) {
             return p.id === key;
         });
 
         productos.splice(indice, 1);
+
+        $('#count-badge').text(productos.length);
         localStorage.productos = JSON.stringify(productos);
     }
 
-    this.obtenerProductosDelCarrito = function (callback) {
-        $.getJSON("/Home/ObtenerProductosPorId?ids=" + IdCategoria, function (data) {
-        });
+    self.obtenerProductosDelCarrito = function (callback) {
+        var productosAlmacenados = JSON.parse(localStorage.productos);
+        if (productosAlmacenados.length > 0) {
+            callback(productosAlmacenados);
+        }
     }
 
-    return this;
+    return self;
 })();

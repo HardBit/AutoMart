@@ -18,7 +18,7 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark justify-content-around">
-        <a class="navbar-brand" href="#">AutoMart</a>
+        <a class="navbar-brand" href="/">AutoMart</a>
 
         @RenderSection("TopNavBar", required: false)
 
@@ -38,7 +38,7 @@
         </ul>
 
         <form class="form-inline">
-            <a class="btn btn-lg btn-outline-light my-2 my-sm-0" href="/Home/Carrito">Carrito</a>
+            <a class="btn btn-lg btn-outline-light my-2 my-sm-0" href="/Home/Carrito">Carrito <span id="count-badge" class="badge badge-light"></span></a>
         </form>
     </nav>
     <div class="container body-content">

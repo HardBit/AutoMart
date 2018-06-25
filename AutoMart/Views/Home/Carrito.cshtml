@@ -8,21 +8,78 @@
     <form class="form-inline"></form>
 }
 
+    <div id="itemCarritoTemplate" style="display: none">
+        <li class="list-group-item">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 nombre">
+                    </div>
+                    <div class="col-lg-6 descripcion">
+                    </div>
+                    <div class="col-lg-2 cantidad">
+                    </div>
+                    <div class="col-lg-1 acciones">
+                        <button type="button" class="btn btn-outline-danger">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </div>
+
     <div id="content-cards">
         <div class="card" style="">
             <div class="card-header">
-                Lista de productos
+                <h4>Lista de productos</h4>
+                <br />
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <b>Nombre:</b>
+                        </div>
+                        <div class="col-lg-6">
+                            <b>Descripción:</b>
+                        </div>
+                        <div class="col-lg-2">
+                            <b>Cantidad:</b>
+                        </div>
+                        <div class="col-lg-1">
+                            <b></b>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                
+            <ul id="lista-carrito-productos" class="list-group list-group-flush">
             </ul>
         </div>
     </div>
 
 @section Scripts {
     <script type="text/javascript">
+        'use strict';
         $(document).ready(function () {
-            var itemCarrito = $('<li class="list-group-item"></li>');
+            var itemCarritoTemplate = $('#itemCarritoTemplate > li');
+
+            ManejarProductos.obtenerProductosDelCarrito(function (data) {
+                $.each(data, function (k, v) {
+                    var itemCarrito = itemCarritoTemplate.clone();
+
+                    itemCarrito.find('.row').attr('idProducto', v.id);
+                    itemCarrito.find('.row > .nombre').text(v.nombre);
+                    itemCarrito.find('.row > .descripcion').text(v.descripcion);
+                    itemCarrito.find('.row > .cantidad').text(v.cantidad);
+
+                    itemCarrito.find('.row > .acciones > button').on('click', function () {
+                        var idProducto = $(this).parent().parent().attr('idProducto');
+                        console.log('eliminando el producto -> ', idProducto);
+
+                        ManejarProductos.eliminar(idProducto);
+
+                        $(this).parentsUntil('.list-group-item').parent().remove();
+                    });
+
+                    $('#lista-carrito-productos').append(itemCarrito);
+                });
+            });
         });
     </script>
 }

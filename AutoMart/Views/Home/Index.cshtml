@@ -156,6 +156,7 @@
 
 @section Scripts {
     <script type="text/javascript">
+        'use strict';
         $(document).ready(function () {
             $('#select-categoria').on('change', function () {
                 var IdCategoria = $(this).val();
@@ -211,6 +212,7 @@
                         console.log('card click ->', IdProducto);
 
                         var dlgProductoDetalle = $('#modal-detalle-producto');
+
                         dlgProductoDetalle.find('#nombre').text(data.nombre);
                         dlgProductoDetalle.find('#descripcion').text(data.descripcion);
                         dlgProductoDetalle.find('#precio').text('$ ' + data.precio);
@@ -218,17 +220,24 @@
                         dlgProductoDetalle.find('#modelo').text(data.modelo.descripcion);
                         dlgProductoDetalle.find('#categoria').text(data.categoria.descripcion);
                         dlgProductoDetalle.find('#anio').text(data.anio);
-                        dlgProductoDetalle.find('#agregar-producto').attr('idProducto', IdProducto);
+                        dlgProductoDetalle.find('#cantidad').text(1);
+
+                        dlgProductoDetalle.find('#agregar-producto').attr('data', $(this).attr('data'));
+
+                        dlgProductoDetalle.find('#agregar-producto').on('click', function () {
+                            var data = JSON.parse($(this).attr('data'));
+
+                            ManejarProductos.agregar({
+                                id: data.idProducto,
+                                nombre: data.nombre,
+                                descripcion: data.descripcion,
+                                cantidad: parseInt($(this).parent().parent().find('#cantidad').val())
+                            });
+                        });
 
                         dlgProductoDetalle.modal('show');
                     });
                 });
-            });
-
-            $('#agregar-producto').on('click', function () {
-                var idProducto = $(this).attr('idProducto');
-
-                ManejarProductos.agregar({id: idProducto, cantidad: 1});
             });
         });
     </script>

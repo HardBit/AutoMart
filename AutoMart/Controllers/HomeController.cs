@@ -56,6 +56,24 @@ namespace AutoMart.Controllers
             return Json(productos);
         }
 
+        [HttpGet]
+        public IActionResult ObtenerProductosPorId(string ids)
+        {
+            var productos = new List<Producto>();
+
+            var idProductos = ids.Split(',');
+            foreach(var id in idProductos)
+            {
+                var result = _context.Producto.Where(p => p.IDProducto == Convert.ToInt32(id));
+                if (result.Count() > 0)
+                {
+                    productos.AddRange(result);
+                }
+            }
+
+            return Json(productos);
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
