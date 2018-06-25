@@ -12,11 +12,15 @@
         <li class="list-group-item">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 nombre">
+                    <div class="col-lg-2 nombre">
                     </div>
-                    <div class="col-lg-6 descripcion">
+                    <div class="col-lg-3 descripcion">
+                    </div>
+                    <div class="col-lg-2 precio-unidad">
                     </div>
                     <div class="col-lg-2 cantidad">
+                    </div>
+                    <div class="col-lg-2 total">
                     </div>
                     <div class="col-lg-1 acciones">
                         <button type="button" class="btn btn-outline-danger">Eliminar</button>
@@ -33,14 +37,20 @@
                 <br />
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-2">
                             <b>Nombre:</b>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <b>Descripción:</b>
                         </div>
                         <div class="col-lg-2">
+                            <b>Precio U.:</b>
+                        </div>
+                        <div class="col-lg-2">
                             <b>Cantidad:</b>
+                        </div>
+                        <div class="col-lg-2">
+                            <b>Total:</b>
                         </div>
                         <div class="col-lg-1">
                             <b></b>
@@ -52,12 +62,25 @@
             </ul>
         </div>
     </div>
+    <div class="row contenedor-total">
+        <div class="col-lg-6">
+        </div>
+        <div class="col-lg-2">
+            <h5><b>Total compra:</b></h5>
+        </div>
+        <div class="col-lg-2 total-carrito">
+        </div>
+        <div class="col-lg-2">
+            <button id="pagar" type="button" style="width: 100%;" class="btn btn-success">Pagar</button>
+        </div>
+    </div>
 
 @section Scripts {
     <script type="text/javascript">
         'use strict';
         $(document).ready(function () {
             var itemCarritoTemplate = $('#itemCarritoTemplate > li');
+            var total = 0.0;
 
             ManejarProductos.obtenerProductosDelCarrito(function (data) {
                 $.each(data, function (k, v) {
@@ -66,7 +89,11 @@
                     itemCarrito.find('.row').attr('idProducto', v.id);
                     itemCarrito.find('.row > .nombre').text(v.nombre);
                     itemCarrito.find('.row > .descripcion').text(v.descripcion);
-                    itemCarrito.find('.row > .cantidad').text(v.cantidad);
+                    itemCarrito.find('.row > .cantidad').text(v.cantidad); 
+                    itemCarrito.find('.row > .precio-unidad').text('$' + v.precio);
+                    var totalItem = parseFloat(v.precio) * parseInt(v.cantidad);
+                    total += totalItem;
+                    itemCarrito.find('.row > .total').html('<b>$' + totalItem + '</b>');
 
                     itemCarrito.find('.row > .acciones > button').on('click', function () {
                         var idProducto = $(this).parent().parent().attr('idProducto');
@@ -79,6 +106,13 @@
 
                     $('#lista-carrito-productos').append(itemCarrito);
                 });
+            });
+
+            localStorage.totalCompra = total;
+            $('.total-carrito').html('<b>$' + total + '</b>');
+
+            $('#pagar').on('click', function () {
+                window.location.href = '/Home/Pago';
             });
         });
     </script>

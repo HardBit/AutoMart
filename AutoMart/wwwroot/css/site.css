@@ -50,3 +50,20 @@
 .producto-detalle > .row > div:first-child {
     font-weight: bold;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.contenedor-total {
+    border-top: solid 1px #117a8b;
+    margin-top: 10px;
+}
+
+.contenedor-total > div {
+    margin-top: 10px;
+}
+
+#formulario-pago {
+    margin-top: 15px;
+}

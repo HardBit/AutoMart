@@ -226,12 +226,13 @@
 
                         dlgProductoDetalle.find('#agregar-producto').on('click', function () {
                             var data = JSON.parse($(this).attr('data'));
-
+                            var cantidad = parseInt($(this).parent().parent().find('#cantidad').val());
                             ManejarProductos.agregar({
                                 id: data.idProducto,
                                 nombre: data.nombre,
                                 descripcion: data.descripcion,
-                                cantidad: parseInt($(this).parent().parent().find('#cantidad').val())
+                                cantidad: cantidad,
+                                precio: data.precio
                             });
                         });
 

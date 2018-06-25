@@ -36,6 +36,12 @@ namespace AutoMart.Controllers
             return View();
         }
 
+        public IActionResult Pago()
+        {
+
+            return View();
+        }
+
         [HttpGet]
         public IActionResult ObtenerProductosPorCategoria(int categoria)
         {
@@ -51,24 +57,6 @@ namespace AutoMart.Controllers
                 _context.Entry(producto).Reference(p => p.Categoria).Load();
                 _context.Entry(producto).Reference(p => p.Marca).Load();
                 _context.Entry(producto).Reference(p => p.Modelo).Load();
-            }
-
-            return Json(productos);
-        }
-
-        [HttpGet]
-        public IActionResult ObtenerProductosPorId(string ids)
-        {
-            var productos = new List<Producto>();
-
-            var idProductos = ids.Split(',');
-            foreach(var id in idProductos)
-            {
-                var result = _context.Producto.Where(p => p.IDProducto == Convert.ToInt32(id));
-                if (result.Count() > 0)
-                {
-                    productos.AddRange(result);
-                }
             }
 
             return Json(productos);
