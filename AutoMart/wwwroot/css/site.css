@@ -67,3 +67,9 @@
 #formulario-pago {
     margin-top: 15px;
 }
+
+    #formulario-pago > .form-row,
+    #formulario-iniciar-sesion > .form-row,
+    #formulario-registro > .form-row {
+        margin-top: 40px;
+    }

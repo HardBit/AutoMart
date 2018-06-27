@@ -51,3 +51,10 @@ window.ManejarProductos = (function () {
 
     return self;
 })();
+
+
+$(document).ready(function () {
+    $('#iniciar-sesion').on('click', function () {
+        window.location.href = '/Home/Login';
+    });
+});
